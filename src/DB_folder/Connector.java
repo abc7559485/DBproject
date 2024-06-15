@@ -1,6 +1,8 @@
 package DB_folder;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -10,6 +12,7 @@ public class Connector {
 	public static boolean connected = false;
 	public static Statement stmt;
 	public static JTable table = new JTable();
+	static JList<String> tableList = new JList<>();
 	Connector(ConnectorGui gui){
 		super();
 		this.gui = gui;
@@ -28,6 +31,25 @@ public class Connector {
 				System.out.println("Success: Connected to the database!");
 				stmt = connection.createStatement();
 				connected = true;
+				ArrayList<String> tableNames = getTableNames();
+				DefaultListModel<String> listmodel = new DefaultListModel<>();
+				for(String tableName : tableNames){
+					listmodel.addElement(tableName);
+				}
+				tableList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+				tableList.addListSelectionListener(e -> {
+					if(!e.getValueIsAdjusting()){
+						String selectedTable = tableList.getSelectedValue();
+						if(selectedTable != null){
+                            try {
+                                show_table(selectedTable);
+                            } catch (SQLException ex) {
+                                throw new RuntimeException(ex);
+                            }
+                        }
+					}
+				});
+				tableList.setModel(listmodel);
 				return true;
 			}
 			else{
@@ -48,6 +70,18 @@ public class Connector {
 		return false;
 	}
 
+	private static ArrayList<String> getTableNames() throws SQLException {
+		ArrayList<String> tableNames = new ArrayList<>();
+		DatabaseMetaData metaData = connection.getMetaData();
+		ResultSet tables = metaData.getTables(null, null, "%", new String[]{"TABLE"});
+		while(tables.next()){
+			String tableName = tables.getString("TABLE_NAME");
+			tableNames.add(tableName);
+		}
+		tables.close();
+		return tableNames;
+	}
+
 	public static void disconnect() throws SQLException {
 		try{
 			if(connected) {
@@ -55,6 +89,8 @@ public class Connector {
 				System.out.println("Success: Disconnected from the database!");
 				gui.textArea_1.append("Success: Disconnected from the database!\n");
 				connected = false;
+				DefaultTableModel model = (DefaultTableModel) table.getModel();
+				model.setRowCount(0);
 			}
 			else{
 				gui.textArea_1.append("Error: Please connect to database first!\n");
@@ -85,13 +121,6 @@ public class Connector {
 		}
 	}
 	public static void showTable() throws SQLException{   		 /*顯示當前所有table*/
-//		String sql = "Show Tables";
-//		ResultSet rs = stmt.executeQuery(sql);
-//		gui.textArea_1.setText("");
-//		while(rs.next()) {
-//			gui.textArea_1.append("Tables:" + rs.getString("Name") + "\n");
-//			System.out.println("Tables:" + rs.getString(1));
-//		}
 		DatabaseMetaData metaData = connection.getMetaData();
 		ResultSet tables = metaData.getTables(null, null, "%", new String[]{"TABLE"});
 		while (tables.next()) {

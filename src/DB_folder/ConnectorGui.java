@@ -6,14 +6,15 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.*;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class ConnectorGui {
-
 	static JFrame frame;
 	static JTextArea textArea_1;
 	static JTextArea textArea;
 	//static DefaultTableModel model;
 	static JScrollPane scrollPane_1;
+	static JScrollPane scrollPane_2;
 
 
 	/**
@@ -265,29 +266,6 @@ public class ConnectorGui {
 		btnNewButton_2_1.setBounds(668, 10, 106, 92);
 		frame.getContentPane().add(btnNewButton_2_1);
 
-		JButton btnNewButton_1_4_1 = new JButton("顯示Tables");
-		btnNewButton_1_4_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				EventQueue.invokeLater(new Runnable() {
-					public void run() {
-						try {
-							if(Connector.connected){
-								showTableWindow window = new showTableWindow();
-							}
-							else{
-								textArea_1.append("Please connect first\n");
-							}
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
-					}
-				});
-			}
-		});
-		btnNewButton_1_4_1.setFont(new Font("新細明體", Font.PLAIN, 14));
-		btnNewButton_1_4_1.setBounds(673, 352, 101, 38);
-		frame.getContentPane().add(btnNewButton_1_4_1);
-
 //		JButton btnNewButton_1_4_2 = new JButton("顯示tables");
 //		btnNewButton_1_4_2.addActionListener(new ActionListener() {
 //			public void actionPerformed(ActionEvent e) {
@@ -302,18 +280,24 @@ public class ConnectorGui {
 //		btnNewButton_1_4_2.setBounds(673, 436, 101, 38);
 //		frame.getContentPane().add(btnNewButton_1_4_2);
 
-		btnNewButton_1_4_1.setFont(new Font("新細明體", Font.PLAIN, 14));
-		btnNewButton_1_4_1.setBounds(673, 352, 101, 38);
-		frame.getContentPane().add(btnNewButton_1_4_1);
 
 		JLabel lblNewLabel_1 = new JLabel("資料庫查詢系統");
 		lblNewLabel_1.setFont(new Font("標楷體", Font.PLAIN, 32));
 		lblNewLabel_1.setBounds(264, 26, 231, 57);
 		frame.getContentPane().add(lblNewLabel_1);
 
+		scrollPane_2 = new JScrollPane(Connector.tableList);
+		scrollPane_2.setBounds(673, 355, 101, 148);
+		frame.getContentPane().add(scrollPane_2);
 
-
+		//frame.getContentPane().add(scrollPane_2);
+		JLabel text = new JLabel("當前Tables");
+		text.setFont(new Font("新細明體", Font.PLAIN, 14));
+		text.setBounds(673, 503, 101, 24);
+		text.setHorizontalAlignment(SwingConstants.CENTER);
+		frame.getContentPane().add(text);
 	}
+
 
 }
 
