@@ -197,7 +197,6 @@ public class Connector {
 						"GROUP BY d.dealer_ID, d.dealer_name\n" +
 						"ORDER BY avg_days_in_inventory DESC\n" +
 						"LIMIT 1;";
-
 		query(sql);
 	}
 
