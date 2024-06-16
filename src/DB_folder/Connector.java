@@ -195,7 +195,9 @@ public class Connector {
 						"JOIN Inventory i ON d.dealer_ID = i.dealer_ID\n" +
 						"LEFT JOIN Sales s ON i.inventory_ID = s.inventory_ID\n" +
 						"GROUP BY d.dealer_ID, d.dealer_name\n" +
-						"ORDER BY avg_days_in_inventory DESC;";
+						"ORDER BY avg_days_in_inventory DESC\n" +
+						"LIMIT 1;";
+
 		query(sql);
 	}
 
