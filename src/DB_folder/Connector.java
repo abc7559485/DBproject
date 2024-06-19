@@ -23,7 +23,7 @@ public class Connector {
 		try{
 			if(!connected){
 				String driver = "org.mariadb.jdbc.Driver";
-				String url = "jdbc:mariadb://0.tcp.jp.ngrok.io:11051/" + account ;
+				String url = "jdbc:mariadb://0.tcp.jp.ngrok.io:12592/" + account ;
 				Class.forName(driver);
 				// Establish the connection
 				connection = DriverManager.getConnection(url, account, pass);
