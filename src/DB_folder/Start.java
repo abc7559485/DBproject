@@ -17,8 +17,6 @@ public class Start {
                 }
             }
         });
-//        DB_folder.ConnectorGui gui = new DB_folder.ConnectorGui();
-//        conn = new DB_folder.Connector(gui);
 
     }
 }

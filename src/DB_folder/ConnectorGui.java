@@ -59,10 +59,6 @@ public class ConnectorGui {
 			public void focusGained(FocusEvent e) {
 				textArea.setText("");
 			}
-
-//			public void focusLost(FocusEvent e) {
-//				textArea.setText("請輸入查詢");
-//			}
 		});
 		textArea.setLineWrap(false);
 		textArea.setWrapStyleWord(false);
@@ -130,7 +126,6 @@ public class ConnectorGui {
 		textArea_1.setEditable(false);
 		textArea_1.setBounds(10, 112, 653, 403);
 		textArea_1.setFont(new Font("Monospaced", Font.PLAIN, 12));
-		//frame.getContentPane().add(textArea_1);
 
 		JScrollPane scrollPane = new JScrollPane(textArea_1);
 		scrollPane.setBounds(10, 450, 653, 53);
@@ -266,21 +261,6 @@ public class ConnectorGui {
 		btnNewButton_2_1.setBounds(668, 10, 106, 92);
 		frame.getContentPane().add(btnNewButton_2_1);
 
-//		JButton btnNewButton_1_4_2 = new JButton("顯示tables");
-//		btnNewButton_1_4_2.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//                try {
-//                    Connector.showTable();
-//                } catch (SQLException ex) {
-//                    throw new RuntimeException(ex);
-//                }
-//            }
-//		});
-//		btnNewButton_1_4_2.setFont(new Font("新細明體", Font.PLAIN, 14));
-//		btnNewButton_1_4_2.setBounds(673, 436, 101, 38);
-//		frame.getContentPane().add(btnNewButton_1_4_2);
-
-
 		JLabel lblNewLabel_1 = new JLabel("資料庫查詢系統");
 		lblNewLabel_1.setFont(new Font("標楷體", Font.PLAIN, 32));
 		lblNewLabel_1.setBounds(264, 26, 231, 57);
@@ -290,7 +270,6 @@ public class ConnectorGui {
 		scrollPane_2.setBounds(673, 355, 101, 148);
 		frame.getContentPane().add(scrollPane_2);
 
-		//frame.getContentPane().add(scrollPane_2);
 		JLabel text = new JLabel("當前Tables");
 		text.setFont(new Font("新細明體", Font.PLAIN, 14));
 		text.setBounds(673, 503, 101, 24);

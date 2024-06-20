@@ -12,12 +12,9 @@ public class CreateTable {
         Class.forName(driver);
         // Establish the connection
         Connection connection = DriverManager.getConnection(url, user, password);
-        //gui.textArea_1.append("Success: Connected to the database!\n");
         System.out.println("Success: Connected to the database!");
 
         Statement stmt = connection.createStatement();
-
-
 
         ResultSet rs = stmt.executeQuery("SHOW TABLES;");     /*將所有表全部移除，須執行三次左右*/
         stmt.executeUpdate("SET FOREIGN_KEY_CHECKS = 0");
@@ -33,8 +30,6 @@ public class CreateTable {
         }
         stmt.executeUpdate("SET FOREIGN_KEY_CHECKS = 1");
 
-
-//
         String Brand =  "CREATE TABLE IF NOT EXISTS Brand (" +
                         "brand_ID INTEGER NOT NULL AUTO_INCREMENT," +
                         "brand_name VARCHAR(45) NOT NULL UNIQUE," +
@@ -42,7 +37,7 @@ public class CreateTable {
                         ")";
        stmt.executeUpdate(Brand);
        System.out.println("Brand create successfully");
-//
+
         String Model =  "CREATE TABLE IF NOT EXISTS Model (" +
                         "model_ID INTEGER NOT NULL AUTO_INCREMENT," +
                         "brand_ID INTEGER NOT NULL," +
@@ -68,8 +63,7 @@ public class CreateTable {
 
         stmt.executeUpdate(Vehicle);
         System.out.println("Vehicle create successfully");
-//
-//
+
         String Part =   "CREATE TABLE IF NOT EXISTS Part (" +
                         "part_ID INTEGER AUTO_INCREMENT," +
                         "part_name VARCHAR(45) NOT NULL," +
@@ -78,19 +72,6 @@ public class CreateTable {
         stmt.executeUpdate(Part);
         System.out.println("Part create successfully");
 
-//        String ModelPart =  "CREATE TABLE IF NOT EXISTS ModelPart (" +
-//                            "model_ID INTEGER NOT NULL," +
-//                            "part_ID INTEGER NOT NULL," +
-//                            "PRIMARY KEY (model_ID, part_ID)," +
-//                            "FOREIGN KEY (model_ID) REFERENCES Model(model_ID)" +
-//                            "ON UPDATE CASCADE ON DELETE CASCADE," +
-//                            "FOREIGN KEY (part_ID) REFERENCES Part(part_ID)" +
-//                            "ON UPDATE CASCADE ON DELETE CASCADE" +
-//                            ")";
-//        stmt.executeUpdate(ModelPart);
-//        System.out.println("ModelPart create successfully");
-
-//
         String Supplier =   "CREATE TABLE IF NOT EXISTS Supplier (" +
                             "supplier_ID INTEGER AUTO_INCREMENT," +
                             "supplier_name VARCHAR(45) NOT NULL," +
@@ -126,19 +107,6 @@ public class CreateTable {
         stmt.executeUpdate(VehiclePart);
         System.out.println("VehiclePart create successfully");
 
-//
-//        String SupplierPart =   "CREATE TABLE IF NOT EXISTS SupplierPart (" +
-//                                "supplier_ID INTEGER NOT NULL," +
-//                                "part_ID INTEGER NOT NULL," +
-//                                "PRIMARY KEY (supplier_ID, part_ID) ," +
-//                                "FOREIGN KEY (supplier_ID) REFERENCES Supplier(supplier_ID)" +
-//                                "ON UPDATE CASCADE ON DELETE CASCADE," +
-//                                "FOREIGN KEY (part_ID) REFERENCES Part(part_ID)" +
-//                                "ON UPDATE CASCADE ON DELETE CASCADE" +
-//                                ")";
-//        stmt.executeUpdate(SupplierPart);
-//        System.out.println("SupplierPart create successfully");
-//
         String Manufacturer =   "CREATE TABLE IF NOT EXISTS Manufacturer (" +
                                 "manufacturer_ID INTEGER AUTO_INCREMENT," +
                                 "manufacturer_name VARCHAR(45) NOT NULL," +
@@ -147,7 +115,7 @@ public class CreateTable {
                                 ")";
         stmt.executeUpdate(Manufacturer);
         System.out.println("Manufacturer create successfully");
-//
+
         String ManufacturerPart =   "CREATE TABLE IF NOT EXISTS ManufacturerPart (" +
                                     "manufacturer_ID INTEGER NOT NULL, " +
                                     "part_ID INTEGER NOT NULL, " +
@@ -159,7 +127,7 @@ public class CreateTable {
                                     ")";
         stmt.executeUpdate(ManufacturerPart);
         System.out.println("ManufacturerPart create successfully");
-//
+
         String Dealer = "CREATE TABLE IF NOT EXISTS Dealer (" +
                         "dealer_ID INTEGER AUTO_INCREMENT," +
                         "dealer_name VARCHAR(45) NOT NULL," +
@@ -169,7 +137,7 @@ public class CreateTable {
                         ")";
         stmt.executeUpdate(Dealer);
         System.out.println("Dealer create successfully");
-//
+
         String Inventory =  "CREATE TABLE IF NOT EXISTS Inventory (" +
                             "inventory_ID INTEGER AUTO_INCREMENT," +
                             "dealer_ID INTEGER NOT NULL, " +
@@ -201,7 +169,7 @@ public class CreateTable {
                             ")";
         stmt.executeUpdate(Customer);
         System.out.println("Customer create successfully");
-//
+
         String Sales =  "CREATE TABLE IF NOT EXISTS Sales (" +
                         "sale_ID INTEGER NOT NULL AUTO_INCREMENT, " +
                         "customer_ID INTEGER NOT NULL, " +
@@ -216,9 +184,6 @@ public class CreateTable {
                         ")";
         stmt.executeUpdate(Sales);
         System.out.println("Sales create successfully");
-        //stmt.executeUpdate("ALTER TABLE Sales ADD amount INTEGER NOT NULL DEFAULT 0");
-       // stmt.executeUpdate("DELETE FROM Sales");
-       // stmt.executeUpdate("UPDATE Sales SET amount = 750000");
 
         System.out.println("Add successfully");
         stmt.close();
