@@ -1,16 +1,7 @@
 package DB_folder;
-
-import org.apache.commons.csv.CSVFormat;
-import org.apache.commons.csv.CSVParser;
-import org.apache.commons.csv.CSVRecord;
-
-import java.io.InputStreamReader;
-import java.io.Reader;
 import java.sql.*;
-import java.util.HashSet;
-import java.util.Set;
 
-public class CreateByCSV {
+public class CreateData {
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
         String driver = "org.mariadb.jdbc.Driver";
         String url = "jdbc:mariadb://0.tcp.jp.ngrok.io:11051/411177005";
@@ -233,84 +224,6 @@ public class CreateByCSV {
                 "(1036, 11)," +
                 "(1036, 12);");
 
-
-//        stmt.executeUpdate("INSERT INTO ModelPart (model_ID, part_ID) VALUES" +
-//                "(1, 1)," +
-//                "(1, 2)," +
-//                "(1, 3)," +
-//                "(1, 4)," +
-//                "(2, 2)," +
-//                "(2, 5)," +
-//                "(2, 6)," +
-//                "(2, 7)," +
-//                "(3, 3)," +
-//                "(3, 6)," +
-//                "(3, 8)," +
-//                "(3, 9)," +
-//                "(4, 1)," +
-//                "(4, 4)," +
-//                "(4, 10)," +
-//                "(4, 11)," +
-//                "(5, 5)," +
-//                "(5, 7)," +
-//                "(5, 12)," +
-//                "(5, 13)," +
-//                "(6, 8)," +
-//                "(6, 9)," +
-//                "(6, 14)," +
-//                "(6, 15)," +
-//                "(7, 1)," +
-//                "(7, 2)," +
-//                "(7, 3)," +
-//                "(7, 4)," +
-//                "(8, 10)," +
-//                "(8, 11)," +
-//                "(8, 12)," +
-//                "(8, 13)," +
-//                "(9, 5)," +
-//                "(9, 6)," +
-//                "(9, 14)," +
-//                "(9, 15)," +
-//                "(10, 1)," +
-//                "(10, 2)," +
-//                "(10, 8)," +
-//                "(10, 9)," +
-//                "(11, 3)," +
-//                "(11, 4)," +
-//                "(11, 10)," +
-//                "(11, 11)," +
-//                "(12, 7)," +
-//                "(12, 8)," +
-//                "(12, 12)," +
-//                "(12, 13);");
-//
-//
-//        stmt.executeUpdate("INSERT INTO SupplierPart (supplier_ID, part_ID) VALUES" +
-//                "(1, 1)," +
-//                "(1, 2)," +
-//                "(1, 3)," +
-//                "(1, 4)," +
-//                "(1, 5)," +
-//                "(2, 6)," +
-//                "(2, 7)," +
-//                "(2, 8)," +
-//                "(2, 9)," +
-//                "(2, 10)," +
-//                "(3, 11)," +
-//                "(3, 12)," +
-//                "(3, 13)," +
-//                "(3, 14)," +
-//                "(3, 15)," +
-//                "(1, 6)," +
-//                "(2, 1)," +
-//                "(3, 2)," +
-//                "(1, 8)," +
-//                "(3, 10)," +
-//                "(1, 11)," +
-//                "(2, 12)," +
-//                "(1, 14)," +
-//                "(2, 15);");
-
         stmt.executeUpdate("INSERT INTO ManufacturerPart (manufacturer_ID, part_ID) VALUES" +
                 "(1, 1)," +
                 "(1, 2)," +
@@ -393,57 +306,5 @@ public class CreateByCSV {
                 "(15, 30, '2024-06-15', 730000)," +
                 "(16, 32, '2024-06-16', 830000)," +
                 "(17, 34, '2024-06-17', 890000)");
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//        ClassLoader classLoader = CreateByCSV.class.getClassLoader();
-//        try (Reader reader = new InputStreamReader(classLoader.getResourceAsStream("BrandAndModel.csv"))) {
-//            CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT.withFirstRecordAsHeader());
-//
-//            Set<String> brands=new HashSet<>();
-//            for (CSVRecord record : csvParser) {
-//                String brand=record.get("brand");
-//                brands.add(brand);
-//            }
-//
-//            String insertSQL="INSERT INTO Brand (name) VALUES (?)";
-//            PreparedStatement pstmt = connection.prepareStatement(insertSQL);
-//            for (String brand:brands) {
-//                pstmt.setString(1,brand);
-//                pstmt.executeUpdate();
-//            }
-//
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
     }
 }

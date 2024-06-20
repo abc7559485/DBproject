@@ -25,16 +25,5 @@ public class DBThread extends Thread {
             e.printStackTrace();
             Connector.gui.textArea_1.append("Error: Database operation failed!\n");
         }
-//        finally {
-//            try{
-//                if(!isQuery && DB_folder.Connector.connected){
-//                    DB_folder.Connector.disconnect();
-//                }
-//            }
-//            catch(SQLException e){
-//                e.printStackTrace();
-//            }
-//        }
-
     }
 }

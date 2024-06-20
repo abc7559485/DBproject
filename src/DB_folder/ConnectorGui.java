@@ -1,12 +1,9 @@
 package DB_folder;
 
 import java.awt.*;
-
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 import java.awt.event.*;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 public class ConnectorGui {
 	static JFrame frame;
@@ -59,15 +56,9 @@ public class ConnectorGui {
 			public void focusGained(FocusEvent e) {
 				textArea.setText("");
 			}
-
-//			public void focusLost(FocusEvent e) {
-//				textArea.setText("請輸入查詢");
-//			}
 		});
 		textArea.setLineWrap(false);
 		textArea.setWrapStyleWord(false);
-//		textArea.setBounds(10, 529, 653, 22);
-//		frame.getContentPane().add(textArea);
 		textArea.addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
@@ -130,7 +121,6 @@ public class ConnectorGui {
 		textArea_1.setEditable(false);
 		textArea_1.setBounds(10, 112, 653, 403);
 		textArea_1.setFont(new Font("Monospaced", Font.PLAIN, 12));
-		//frame.getContentPane().add(textArea_1);
 
 		JScrollPane scrollPane = new JScrollPane(textArea_1);
 		scrollPane.setBounds(10, 450, 653, 53);
@@ -140,8 +130,6 @@ public class ConnectorGui {
 		scrollPane_1 = new JScrollPane(Connector.table);
 		scrollPane_1.setBounds(10, 112, 653, 330);
 		frame.getContentPane().add(scrollPane_1);
-
-
 
 		JButton btnNewButton_1 = new JButton("查詢一");
 		btnNewButton_1.addActionListener(new ActionListener() {
@@ -266,21 +254,6 @@ public class ConnectorGui {
 		btnNewButton_2_1.setBounds(668, 10, 106, 92);
 		frame.getContentPane().add(btnNewButton_2_1);
 
-//		JButton btnNewButton_1_4_2 = new JButton("顯示tables");
-//		btnNewButton_1_4_2.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//                try {
-//                    Connector.showTable();
-//                } catch (SQLException ex) {
-//                    throw new RuntimeException(ex);
-//                }
-//            }
-//		});
-//		btnNewButton_1_4_2.setFont(new Font("新細明體", Font.PLAIN, 14));
-//		btnNewButton_1_4_2.setBounds(673, 436, 101, 38);
-//		frame.getContentPane().add(btnNewButton_1_4_2);
-
-
 		JLabel lblNewLabel_1 = new JLabel("資料庫查詢系統");
 		lblNewLabel_1.setFont(new Font("標楷體", Font.PLAIN, 32));
 		lblNewLabel_1.setBounds(264, 26, 231, 57);
@@ -290,14 +263,11 @@ public class ConnectorGui {
 		scrollPane_2.setBounds(673, 355, 101, 148);
 		frame.getContentPane().add(scrollPane_2);
 
-		//frame.getContentPane().add(scrollPane_2);
 		JLabel text = new JLabel("當前Tables");
 		text.setFont(new Font("新細明體", Font.PLAIN, 14));
 		text.setBounds(673, 503, 101, 24);
 		text.setHorizontalAlignment(SwingConstants.CENTER);
 		frame.getContentPane().add(text);
 	}
-
-
 }
 
