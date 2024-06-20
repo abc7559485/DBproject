@@ -11,7 +11,7 @@ DBproject是用來處理資料庫相關的程式。透過連上學號所對應�
 
 組員：411177005徐柏鈞、411177011林士祐
 
-註：ERD與relation schema皆放在目錄檔中的resource資料夾中
+註：ERD與relation schema皆放在\src\resource\中
 
 ## 安裝與配置
 點擊Code並下載成zip檔，解壓縮後執行DBproject.jar即可
